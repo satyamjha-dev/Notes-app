@@ -1,28 +1,51 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notes App</title>
+<link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="container">
-    <h1>Notes App</h1>
-    
-    <form id="noteForm">
-        <div class="form-group">
-            <label>Title</label>
-            <input type="text" id="noteTitle" required>
-        </div>
-        <div class="form-group">
-            <label>Description</label>
-            <textarea id="noteDescription" rows="4" required></textarea>
-        </div>
-        <button type="submit">Add Note</button>
-    </form>
 
-    <div id="notesContainer"></div>
+<body>
+
+<div class="container">
+    <header class="app-header">
+        <h1>Notes App</h1>
+        <p>A simple and elegant way to keep your thoughts organized.</p>
+    </header>
+
+<div class="form-container">
+    <form class="note-form">
+        <div class="input-group">
+            <label for="title">Title</label>
+            <input type="text" id="title" placeholder="E.g.,thoughts" required>
+        </div>
+
+<div class="input-group">
+    <label for="description">Description</label>
+    <textarea id="description" placeholder="Write your note here..." rows="4" required></textarea>
 </div>
-    
+<button type="submit" class="btn-add">Add Note</button>
+</form>
+</div>
+<div class="notes-section">
+    <h2>All Notes</h2>
+    <div class="notes-grid">
+        <div class="note-card">
+            <div class="note-content">
+                <h3>Sample Note</h3>
+                <p>This is an example note description.</p>
+            </div>
+            <button class="btn-delete">Delete</button>
+        </div>
+    </div>
+    <div class="empty-state">
+        <p>No notes found. Add a note to get started!</p>
+    </div>
+</div>
+
+</div>
+
 </body>
-</html> -->
+</html>

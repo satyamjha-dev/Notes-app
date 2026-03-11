@@ -15,16 +15,16 @@ if ($conn->connect_error) {
 if (isset($_GET['delete_id'])) {
     $id = $_GET['delete_id'];
 
-    $stmt = $conn->prepare("DELETE FROM notes WHERE id = ?");
-    $stmt->bind_param("i", $id);
+    $delete = $conn->prepare("DELETE FROM notes WHERE id = ?");
+    $delete->bind_param("i", $id);
 
-    if ($stmt->execute()) {
+    if ($delete->execute()) {
         echo json_encode(["status" => "success", "message" => "Note deleted"]);
     } else {
         echo json_encode(["status" => "error", "message" => "Delete failed"]);
     }
 
-    $stmt->close();
+    $delete->close();
     $conn->close();
     exit();
 }
@@ -34,16 +34,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $description = $_POST['description'] ?? null;
 
     if (!empty($title) && !empty($description)) {
-        $stmt = $conn->prepare("INSERT INTO notes (title, description) VALUES (?, ?)");
-        $stmt->bind_param("ss", $title, $description);
+        $insert = $conn->prepare("INSERT INTO notes (title, description) VALUES (?, ?)");
+        $insert->bind_param("ss", $title, $description);
 
-        if ($stmt->execute()) {
+        if ($insert->execute()) {
             echo json_encode(["status" => "success", "message" => "Note inserted"]);
         } else {
             echo json_encode(["status" => "error", "message" => "Insert failed"]);
         }
 
-        $stmt->close();
+        $insert->close();
     } else {
         echo json_encode(["status" => "error", "message" => "Missing title or description"]);
     }
