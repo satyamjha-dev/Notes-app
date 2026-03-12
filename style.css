@@ -17,6 +17,7 @@ body {
 .container {
     max-width: 800px;
     margin: 0 auto;
+
 }
 
 
@@ -79,6 +80,7 @@ body {
 
 .input-group input:focus,
 .input-group textarea:focus {
+    
     outline: none;
     border-color: #666;
     background-color: #ffffff;
