@@ -1,4 +1,4 @@
-/* Reset common elements */
+
 * {
     margin: 0;
     padding: 0;
@@ -6,21 +6,20 @@
 }
 
 body {
-    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background-color: #f8fafc; /* Very light modern gray-blue */
-    color: #334155;
+    background-color: #f5f5f5;
+    color: #333;
     line-height: 1.6;
     min-height: 100vh;
     padding: 2rem 1rem;
 }
 
-/* Main Container */
+
 .container {
     max-width: 800px;
     margin: 0 auto;
 }
 
-/* Header */
+
 .app-header {
     text-align: center;
     margin-bottom: 2rem;
@@ -29,22 +28,22 @@ body {
 .app-header h1 {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #0f172a;
+    color: #222;
     letter-spacing: -0.025em;
     margin-bottom: 0.5rem;
 }
 
 .app-header p {
-    color: #64748b;
+    color: #555;
     font-size: 1.125rem;
 }
 
-/* Form Container Style */
+
 .form-container {
-    background-color: #ffffff;
+    background-color: #fff;
     padding: 2.5rem;
     border-radius: 20px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     margin-bottom: 3rem;
     border: 1px solid #f1f5f9;
 }
@@ -63,7 +62,7 @@ body {
 
 .input-group label {
     font-weight: 600;
-    color: #475569;
+    color: #444;
     font-size: 0.95rem;
 }
 
@@ -71,25 +70,24 @@ body {
 .input-group textarea {
     width: 100%;
     padding: 1rem 1.25rem;
-    border: 1px solid #cbd5e1;
+    border: 1px solid #ccc;
     border-radius: 12px;
     font-size: 1rem;
-    font-family: inherit;
     transition: all 0.2s ease;
-    background-color: #f8fafc;
+    background-color: #fff;
 }
 
 .input-group input:focus,
 .input-group textarea:focus {
     outline: none;
-    border-color: #3b82f6;
+    border-color: #666;
     background-color: #ffffff;
-    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+    box-shadow: none;
 }
 
-/* Button Stylings */
+
 .btn-add {
-    background-color: #3b82f6;
+    background-color: #333;
     color: white;
     font-size: 1rem;
     font-weight: 600;
@@ -103,19 +101,19 @@ body {
 }
 
 .btn-add:hover {
-    background-color: #2563eb;
+    background-color: #111;
     transform: translateY(-1px);
-    box-shadow: 0 6px 8px -1px rgba(59, 130, 246, 0.4);
+    box-shadow: none;
 }
 
 .btn-add:active {
     transform: translateY(0);
 }
 
-/* Notes Section */
+
 .notes-section h2 {
     font-size: 1.5rem;
-    color: #0f172a;
+    color: #222;
     margin-bottom: 1.5rem;
     font-weight: 600;
 }
@@ -126,12 +124,12 @@ body {
     gap: 1.5rem;
 }
 
-/* Note Card */
+
 .note-card {
-    background-color: #ffffff;
+    background-color: #fff;
     border-radius: 16px;
     padding: 1.75rem;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     border: 1px solid #f1f5f9;
     display: flex;
     flex-direction: column;
@@ -146,13 +144,13 @@ body {
 
 .note-content h3 {
     font-size: 1.25rem;
-    color: #1e293b;
+    color: #222;
     margin-bottom: 0.75rem;
     word-wrap: break-word;
 }
 
 .note-content p {
-    color: #475569;
+    color: #555;
     font-size: 0.95rem;
     line-height: 1.5;
     margin-bottom: 2rem;
@@ -161,13 +159,13 @@ body {
 }
 
 .delete-form {
-    margin-top: auto; /* Push delete button to bottom */
+    margin-top: auto;
     display: flex;
 }
 
 .btn-delete {
-    background-color: #fee2e2;
-    color: #ef4444;
+    background-color: #eee;
+    color: #333;
     font-size: 0.875rem;
     font-weight: 600;
     padding: 0.625rem 1rem;
@@ -178,31 +176,18 @@ body {
 }
 
 .btn-delete:hover {
-    background-color: #ef4444;
+    background-color: #333;
     color: white;
-    box-shadow: 0 4px 6px -1px rgba(239, 68, 68, 0.2);
+    box-shadow: none;
 }
 
 
 .empty-state {
     text-align: center;
     padding: 3rem 1rem;
-    background-color: #ffffff;
+    background-color: #fff;
     border-radius: 16px;
-    border: 2px dashed #cbd5e1;
-    color: #64748b;
+    color: #555;
 }
 
-@media (max-width: 600px) {
-    body {
-        padding: 1rem 0.5rem;
-    }
-    
-    .form-container {
-        padding: 1.5rem;
-    }
-    
-    .note-card {
-        padding: 1.25rem;
-    }
-}
+
