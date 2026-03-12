@@ -29,11 +29,12 @@
                 </div>
 
                 
+            
+
+                <button type="submit" id="addBtn" class="btn-add">Add Note</button>
                 <div class="dot-loader" id="addLoader">
                     <span></span><span></span><span></span>
                 </div>
-
-                <button type="submit" id="addBtn" class="btn-add">Add Note</button>
             </form>
         </div>
 
