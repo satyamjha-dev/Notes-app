@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="toast"></div>
 
     <div class="container">
         <header class="app-header">
@@ -57,14 +56,6 @@
 
     const $ = id => document.getElementById(id);
 
-    let toastTimer;
-    function showToast(msg, isError = false) {
-        const t = $('toast');
-        t.textContent = msg;
-        t.className   = 'show' + (isError ? ' error' : '');
-        clearTimeout(toastTimer);
-        toastTimer = setTimeout(() => { t.className = ''; }, 2800);
-    }
 
  
     function buildCard(note) {
@@ -108,7 +99,7 @@
             .then(r => r.json())
             .then(data => {
                 $('fetchLoader').classList.remove('visible');
-                if (!data.success) { showToast(data.error || 'Failed to load notes.', true); return; }
+                if (!data.success) { console.error(data.error || 'Failed to load notes.'); return; }
 
                 const grid = $('notesGrid');
                 grid.innerHTML = '';
@@ -117,7 +108,7 @@
             })
             .catch(() => {
                 $('fetchLoader').classList.remove('visible');
-                showToast('Network error. Could not load notes.', true);
+                console.error('Network error. Could not load notes.');
             });
     }
 
@@ -129,7 +120,7 @@
         const description = $('description').value.trim();
 
         if (!title || !description) {
-            showToast('Title and description are required.', true);
+            alert('Title and description are required.');
             return;
         }
 
@@ -151,7 +142,7 @@
                 btn.disabled = false;
                 btn.textContent = 'Add Note';
 
-                if (!data.success) { showToast(data.error || 'Failed to add note.', true); return; }
+                if (!data.success) { console.error(data.error || 'Failed to add note.'); return; }
 
             
                 const grid = $('notesGrid');
@@ -162,13 +153,13 @@
             
                 $('title').value       = '';
                 $('description').value = '';
-                showToast('Note added!');
+                console.log('Note added');
             })
             .catch(() => {
                 $('addLoader').classList.remove('visible');
                 btn.disabled = false;
                 btn.textContent = 'Add Note';
-                showToast('Network error. Could not add note.', true);
+                console.error('Network error. Could not add note.');
             });
     });
 
@@ -185,16 +176,16 @@
             .then(data => {
                 if (!data.success) {
                     cardEl.classList.remove('removing'); // restore card
-                    showToast(data.error || 'Failed to delete note.', true);
+                    console.error(data.error || 'Failed to delete note.');
                     return;
                 }
      
                 setTimeout(() => { cardEl.remove(); syncEmptyState(); }, 300);
-                showToast('Note deleted.');
+                console.log('Note deleted');
             })
             .catch(() => {
                 cardEl.classList.remove('removing');
-                showToast('Network error. Could not delete note.', true);
+                console.error('Network error. Could not delete note.');
             });
     }
     loadNotes();
