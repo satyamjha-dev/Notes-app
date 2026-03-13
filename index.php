@@ -75,14 +75,6 @@
         return card;
     }
 
-    function escHtml(str) {
-        return str
-            .replace(/&/g,'&amp;')
-            .replace(/</g,'&lt;')
-            .replace(/>/g,'&gt;')
-            .replace(/"/g,'&quot;');
-    }
-
    
     function syncEmptyState() {
         const grid  = $('notesGrid');
@@ -175,7 +167,7 @@
             .then(r => r.json())
             .then(data => {
                 if (!data.success) {
-                    cardEl.classList.remove('removing'); // restore card
+                    cardEl.classList.remove('removing'); 
                     console.error(data.error || 'Failed to delete note.');
                     return;
                 }
