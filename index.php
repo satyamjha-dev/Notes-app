@@ -30,7 +30,12 @@
                 
             
 
-                <button type="submit" id="addBtn" class="btn-add">Add Note</button>
+                <div class="input-group">
+                    <label for="required_skill">Required Skill</label>
+                    <input type="text" id="required_skill" name="required_skill" placeholder="e.g. Frontend, Backend" required>
+                </div>
+
+                <button type="submit" id="addBtn" class="btn-add">Assign Task using AI</button>
                 <div class="dot-loader" id="addLoader">
                     <span></span><span></span><span></span>
                 </div>
@@ -65,7 +70,12 @@
         card.innerHTML = `
             <div class="note-content">
                 <h3>${escHtml(note.title)}</h3>
-                <p>${escHtml(note.description)}</p>
+                <p><strong>Description:</strong> ${escHtml(note.description)}</p>
+                <div class="task-info">
+                   <p><strong>Skill:</strong> ${escHtml(note.required_skill)}</p>
+                   <p><strong>Assigned To:</strong> <span class="badge">${escHtml(note.assigned_to || 'Not Assigned')}</span></p>
+                   <p><strong>Reason:</strong> <em>${escHtml(note.reason || 'No reason available')}</em></p>
+                </div>
             </div>
             <div class="delete-form">
                 <button class="btn-delete" data-id="${note.id}">Delete</button>
@@ -73,6 +83,13 @@
 
         card.querySelector('.btn-delete').addEventListener('click', () => deleteNote(note.id, card));
         return card;
+    }
+
+    function escHtml(str) {
+        if (!str) return '';
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
     }
 
    
@@ -123,9 +140,10 @@
         btn.textContent = 'Adding…';
 
         const formData = new FormData();
-        formData.append('action', 'add_note');
+        formData.append('action', 'add_task');
         formData.append('title', title);
         formData.append('description', description);
+        formData.append('required_skill', $('required_skill').value.trim());
 
         fetch('api.php', { method: 'POST', body: formData })
             .then(r => r.json())
@@ -143,9 +161,10 @@
                 syncEmptyState();
 
             
-                $('title').value       = '';
-                $('description').value = '';
-                console.log('Note added');
+                $('title').value          = '';
+                $('description').value    = '';
+                $('required_skill').value = '';
+                console.log('Task assigned and added');
             })
             .catch(() => {
                 $('addLoader').classList.remove('visible');
